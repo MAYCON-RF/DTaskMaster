@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:desafio_task_master/theme/app_colors.dart';
+import 'package:desafio_task_master/core/app_theme.dart';
 
 class PageIndicator extends StatelessWidget {
   final int itemCount;

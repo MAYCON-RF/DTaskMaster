@@ -1,7 +1,7 @@
-import 'package:desafio_task_master/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:desafio_task_master/theme/app_colors.dart';
-
+import 'dart:async';
+import '../screens/onboarding_screen.dart';
+import '../services/storage_service.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,26 +9,32 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final _storageService = StorageService();
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => OnboardingScreen()), // <- novo widget
-      );
-    });
+    _navigate();
+  }
+
+  void _navigate() async {
+    bool seen = await _storageService.isOnboardingSeen();
+
+    await Future.delayed(Duration(seconds: 2));
+    if (seen) {
+      // Navegação para home ou tela principal (placeholder por enquanto)
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Scaffold(
+        body: Center(child: Text("Tela principal aqui")),
+      )));
+    } else {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => OnboardingScreen()));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: Center(
-        child: Image.asset(
-          'assets/logo_dtaskmaster.png',
-          height: 250,
-        ),
-      ),
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }
