@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 
-class AcceptTermsSwitch extends StatelessWidget {
+class AcceptTermsSwitch extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
   final VoidCallback onTermsTap;
@@ -17,13 +17,42 @@ class AcceptTermsSwitch extends StatelessWidget {
   });
 
   @override
+  State<AcceptTermsSwitch> createState() => _AcceptTermsSwitchState();
+}
+
+class _AcceptTermsSwitchState extends State<AcceptTermsSwitch> {
+  late TapGestureRecognizer _termsRecognizer;
+  late TapGestureRecognizer _privacyRecognizer;
+
+  @override
+  void initState() {
+    super.initState();
+    _termsRecognizer = TapGestureRecognizer()..onTap = widget.onTermsTap;
+    _privacyRecognizer = TapGestureRecognizer()..onTap = widget.onPrivacyTap;
+  }
+
+  @override
+  void didUpdateWidget(covariant AcceptTermsSwitch oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _termsRecognizer.onTap = widget.onTermsTap;
+    _privacyRecognizer.onTap = widget.onPrivacyTap;
+  }
+
+  @override
+  void dispose() {
+    _termsRecognizer.dispose();
+    _privacyRecognizer.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Switch(
-          value: value,
-          onChanged: onChanged,
+          value: widget.value,
+          onChanged: widget.onChanged,
           activeTrackColor: AppColors.primaryLight, // cor gradiente clara
           activeColor: AppColors.primary,     // cor gradiente escura
         ),
@@ -39,7 +68,7 @@ class AcceptTermsSwitch extends StatelessWidget {
                     color: Colors.blue,
                     decoration: TextDecoration.underline,
                   ),
-                  recognizer: TapGestureRecognizer()..onTap = onTermsTap,
+                  recognizer: _termsRecognizer,
                 ),
                 const TextSpan(text: ' e nossa '),
                 TextSpan(
@@ -48,7 +77,7 @@ class AcceptTermsSwitch extends StatelessWidget {
                     color: Colors.blue,
                     decoration: TextDecoration.underline,
                   ),
-                  recognizer: TapGestureRecognizer()..onTap = onPrivacyTap,
+                  recognizer: _privacyRecognizer,
                 ),
                 const TextSpan(text: '.'),
               ],
