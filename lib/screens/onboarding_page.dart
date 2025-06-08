@@ -1,12 +1,12 @@
 // Importações dos pacotes
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/models/onboarding_model.dart';
-import 'package:desafio_task_master/core/app_theme.dart';
-import 'package:desafio_task_master/widgets/back_button_widget.dart';
-import 'package:desafio_task_master/widgets/page_indicator.dart';
-import 'package:desafio_task_master/services/storage_service.dart';
-
+import '../core/app_theme.dart';
+import '../widgets/back_button_widget.dart';
+import '../widgets/page_indicator.dart';
+import '../services/storage_service.dart';
 import '../widgets/gradient_button.dart';
+import 'login_screen.dart';
 
 class OnboardingPage extends StatefulWidget {
   @override
@@ -24,28 +24,28 @@ class _OnboardingPageState extends State<OnboardingPage> {
       title: 'Organize sua\nvida com\nfacilidade 📌',
       subtitle:
       'Crie, edite e acompanhe suas tarefas em um só lugar. Mantenha o controle do seu dia de forma simples e intuitiva.',
-      color: AppColors.titlePrimary,
+      color: AppColors.primary,
     ),
     OnboardingModel(
       image: 'assets/onboarding_focus.png',
       title: 'Foque no que\nrealmente\nimporta ⚡',
       subtitle:
       'Classifique suas atividades por prioridade e categorias. Gerencie o que é urgente e o que pode esperar, com total clareza.',
-      color: AppColors.titlePrimary,
+      color: AppColors.primary,
     ),
     OnboardingModel(
       image: 'assets/onboarding_alert.png',
       title: 'Nunca mais\nperca um\nprazo',
       subtitle:
       'Receba alertas e lembretes automáticos para manter suas tarefas em dia. Seu planejamento sempre na palma da mão.',
-      color: AppColors.titlePrimary,
+      color: AppColors.primary,
     ),
     OnboardingModel(
       image: 'assets/onboarding_calendar.png',
       title: 'Tudo conectado,\nsem esforço',
       subtitle:
       'Sincronize suas tarefas diretamente com o Google Calendar e visualize seus compromissos em um só lugar.',
-      color: AppColors.titlePrimary,
+      color: AppColors.primary,
     ),
   ];
 
@@ -64,13 +64,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
     await _storageService.setOnboardingSeen();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (_) => Scaffold(
-          body: Center(child: Text('Tela principal aqui')),
-        ),
-      ),
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -102,12 +99,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         const SizedBox(height: 30),
 
                         // Imagem centralizada
-                        Center(
-                          child: Image.asset(
-                            page.image,
-                            height: 160,
-                          ),
-                        ),
+                        Center(child: Image.asset(page.image, height: 160)),
                         const SizedBox(height: 30),
 
                         // Título com espaçamento lateral
@@ -115,8 +107,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 15.0),
                           child: Text(
                             page.title,
-                            style:
-                            AppTextStyles.title.copyWith(color: page.color),
+                            style: AppTextStyles.title.copyWith(
+                              color: page.color,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -143,8 +136,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           itemCount: pages.length,
                         ),
 
-                        const SizedBox(height: 32), // altura entre indicadores e botão
+                        const SizedBox(height: 32),
 
+                        // altura entre indicadores e botão
                         Padding(
                           padding: const EdgeInsets.only(bottom: 40.0),
                           child: Row(
@@ -159,7 +153,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   );

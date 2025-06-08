@@ -2,7 +2,10 @@
 
 ## Descrição
 
-O **TaskMaster** é uma aplicação web moderna desenvolvida em  e  que permite aos usuários gerenciar suas tarefas de forma eficiente e intuitiva. Com uma interface minimalista e funcionalidades poderosas, o sistema oferece uma experiência completa de gerenciamento de tarefas, incluindo priorização, categorização e acompanhamento de progresso.
+O **TaskMaster** é uma aplicação web moderna desenvolvida em e que permite aos usuários gerenciar
+suas tarefas de forma eficiente e intuitiva. Com uma interface minimalista e funcionalidades
+poderosas, o sistema oferece uma experiência completa de gerenciamento de tarefas, incluindo
+priorização, categorização e acompanhamento de progresso.
 
 ## 📸 Preview do Projeto
 
@@ -40,7 +43,6 @@ O **TaskMaster** é uma aplicação web moderna desenvolvida em  e  que permite 
 
 ## Tecnologias Utilizadas
 
-
 - **Ferramentas de Desenvolvimento:** VS Code, Git, GitHub
 
 ## Requisitos de Execução
@@ -53,19 +55,13 @@ O **TaskMaster** é uma aplicação web moderna desenvolvida em  e  que permite 
 
 ### Passo 1: Clone o Repositório
 
-
 ### Passo 2: Instalar Dependências
-
 
 ### Passo 3: Iniciar o Servidor de Desenvolvimento
 
-
 ### Passo 4: Acessar o Sistema
 
-
-
 ## Estrutura do Projeto
-
 
 ## Exemplo de Uso
 
@@ -74,10 +70,10 @@ O **TaskMaster** é uma aplicação web moderna desenvolvida em  e  que permite 
 
 2. **Gerenciar Tarefas:**
 
-
 ## Público-Alvo
 
-Profissionais, estudantes e qualquer pessoa que busque uma ferramenta eficiente para organização de tarefas e aumento de produtividade.
+Profissionais, estudantes e qualquer pessoa que busque uma ferramenta eficiente para organização de
+tarefas e aumento de produtividade.
 
 ## Autor
 

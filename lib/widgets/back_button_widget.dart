@@ -8,11 +8,9 @@
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 
-
 class BackButtonWidget extends StatelessWidget {
   // Função a ser executada ao pressionar o botão na primeira página (opcional)
   final VoidCallback? onFirstPage;
-
 
   // Controlador do PageView, necessário para voltar páginas
   final PageController? pageController;
@@ -27,16 +25,12 @@ class BackButtonWidget extends StatelessWidget {
     this.onFirstPage,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
       child: IconButton(
-        icon: const Icon(
-          Icons.arrow_back_ios_new,
-          color: AppColors.textLight,
-        ),
+        icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.textLight),
         onPressed: () {
           if (currentPage > 0 && pageController != null) {
             // Se não for a primeira página, volta uma página no PageView
@@ -49,8 +43,6 @@ class BackButtonWidget extends StatelessWidget {
             if (onFirstPage != null) {
               onFirstPage!();
             } else {
-
-
               // Se nenhuma ação for fornecida, volta para a tela anterior
               Navigator.pop(context);
             }

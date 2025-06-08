@@ -24,8 +24,4 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/logo_dtaskmaster.png
-    - assets/onboarding_task.png
-    - assets/onboarding_focus.png
-    - assets/onboarding_alert.png
-    - assets/onboarding_calendar.png
+    - assets/

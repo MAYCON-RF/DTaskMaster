@@ -1,3 +1,8 @@
+/*
+  Componente reutilizável indicador de pagina
+  Pode ser usado em telas com PageView (como o onboarding)
+*/
+
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 

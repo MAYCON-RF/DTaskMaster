@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../screens/onboarding_screen.dart';
+import 'package:desafio_task_master/screens/onboarding_screen.dart';
 import '../services/storage_service.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -23,18 +23,23 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 2));
     if (seen) {
       // Navegação para home ou tela principal (placeholder por enquanto)
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Scaffold(
-        body: Center(child: Text("Tela principal aqui")),
-      )));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) =>
+              Scaffold(body: Center(child: Text("Tela principal aqui"))),
+        ),
+      );
     } else {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => OnboardingScreen()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => OnboardingScreen()),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: CircularProgressIndicator()),
-    );
+    return Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

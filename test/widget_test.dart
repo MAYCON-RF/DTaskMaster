@@ -4,11 +4,7 @@ import 'package:desafio_task_master/screens/splash_screen.dart'; // ajuste para 
 
 void main() {
   testWidgets('SplashScreen is rendered', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: SplashScreen(),
-      ),
-    );
+    await tester.pumpWidget(MaterialApp(home: SplashScreen()));
 
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });

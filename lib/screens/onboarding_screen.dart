@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/screens/onboarding_page.dart';
-import 'package:desafio_task_master/core/app_theme.dart';
+import '../core/app_theme.dart';
 
 /* Tela inicial do app que exibe o logo centralizado
    e permite iniciar o onboarding ao arrastar para o lado. */
@@ -13,9 +13,9 @@ class OnboardingScreen extends StatelessWidget {
     return GestureDetector(
       // Ao detectar o gesto de arrasto lateral, navega para a próxima tela
       onHorizontalDragEnd: (_) {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => OnboardingPage()),
-        );
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (_) => OnboardingPage()));
       },
       child: Scaffold(
         backgroundColor: AppColors.background,
@@ -24,7 +24,9 @@ class OnboardingScreen extends StatelessWidget {
             // Logo central
             Center(
               child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5, // 50% da altura da tela
+                height:
+                MediaQuery.of(context).size.height *
+                    0.5, // 50% da altura da tela
                 child: Image.asset(
                   'assets/logo_dtaskmaster.png',
                   fit: BoxFit.contain,
