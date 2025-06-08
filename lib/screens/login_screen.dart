@@ -32,17 +32,20 @@ class LoginScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.only(bottom: 24),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
+                    crossAxisAlignment: CrossAxisAlignment.center,                    children: [
                       const SizedBox(height: 16),
 
                       // Campo de e-mail
-                      TextField(
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      height: 48,
+                      child: TextField(
                         decoration: InputDecoration(
                           labelText: 'E-mail ou usuário',
                           prefixIcon: const Icon(Icons.email_outlined),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
+                          ),
                           ),
                         ),
                       ),
@@ -50,13 +53,17 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(height: 16),
 
                       // Campo de senha
-                      TextField(
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      height: 48,
+                      child: TextField(
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: 'Senha',
-                          prefixIcon: const Icon(Icons.lock_outline),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            labelText: 'Senha',
+                            prefixIcon: const Icon(Icons.lock_outline),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                           ),
                         ),
                       ),
@@ -93,6 +100,7 @@ class LoginScreen extends StatelessWidget {
 
                       // Botão Facebook
                       SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.85,
                         height: 48,
                         child: SocialLoginButton(
                           iconPath: 'assets/facebook_logo.png',
@@ -104,7 +112,8 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(height: 24),
 
                       // Link para registro
-                      TextButton(
+                    Center(
+                      child: TextButton(
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -117,7 +126,10 @@ class LoginScreen extends StatelessWidget {
                           "Não tenho uma conta!",
                           style: AppTextStyles.link,
                         ),
+                        ),
+
                       ),
+                    const SizedBox(height: 8),
 
                       // Link de esqueci a senha
                       Align(
@@ -129,6 +141,7 @@ class LoginScreen extends StatelessWidget {
                           child: const Text("Esqueceu a senha?"),
                         ),
                       ),
+                    const SizedBox(height: 8),
                     ],
                   ),
                 ),

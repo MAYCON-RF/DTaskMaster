@@ -1,9 +1,3 @@
-/*
-  Componente reutilizável de botão "avançar".
-  Pode ser usado em telas com PageView, pagina home, e demais telas
-  avançando ou confirmando para a proxima pagina
-*/
-
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 
