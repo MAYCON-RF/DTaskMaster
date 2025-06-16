@@ -2,7 +2,9 @@
 
 ## Descrição
 
-O **TaskMaster** é uma aplicação web moderna desenvolvida em  e  que permite aos usuários gerenciar suas tarefas de forma eficiente e intuitiva. Com uma interface minimalista e funcionalidades poderosas, o sistema oferece uma experiência completa de gerenciamento de tarefas, incluindo priorização, categorização e acompanhamento de progresso.
+O **DTaskMaster** é um aplicativo moderno desenvolvido em **Flutter**, com foco em produtividade, organização pessoal e experiência do usuário (UX/UI). Ele permite que os usuários criem, organizem e acompanhem suas tarefas de forma eficiente e visualmente agradável, por meio de uma interface minimalista e responsiva.
+
+A aplicação foi construída com arquitetura modular baseada em responsabilidades (screens, widgets, controllers, models e core) e traz uma navegação fluida, com integração com Google Calendar e recursos de lembrete e foco.
 
 ## 📸 Preview do Projeto
 
