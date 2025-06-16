@@ -1,53 +1,85 @@
 /*
-  Componente reutilizável de botão "Voltar".
-  Pode ser usado em telas com PageView (como o onboarding),
-  retrocedendo para a página anterior ou, se estiver na primeira página,
-  executa uma ação personalizada ou fecha a tela.
+  Componente: Botão Voltar Personalizado
+
+  Este widget exibe um botão de voltar no canto superior esquerdo da tela.
+  Pode navegar entre páginas de um PageController ou voltar à tela anterior.
+
+  Parâmetros:
+  - currentPage: página atual (para decidir se volta ou finaliza)
+  - pageController: controlador de navegação entre páginas (opcional)
+  - onFirstPage: ação customizada ao clicar no botão estando na primeira página
+  - useGradientStyle: exibe o botão com fundo em gradiente se verdadeiro
 */
 
+
+// Importações dos pacotes
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 
+
+// Widget reutilizável para navegação com botão de voltar
 class BackButtonWidget extends StatelessWidget {
-  // Função a ser executada ao pressionar o botão na primeira página (opcional)
   final VoidCallback? onFirstPage;
-
-  // Controlador do PageView, necessário para voltar páginas
   final PageController? pageController;
-
-  // Página atual para verificar se está na primeira (índice 0)
   final int currentPage;
+  final bool useGradientStyle;
 
   const BackButtonWidget({
     Key? key,
     this.pageController,
     required this.currentPage,
     this.onFirstPage,
+    this.useGradientStyle = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
-      child: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.textLight),
-        onPressed: () {
+      child: GestureDetector(
+        onTap: () {
           if (currentPage > 0 && pageController != null) {
-            // Se não for a primeira página, volta uma página no PageView
+            // Volta para a página anterior do onboarding
             pageController!.previousPage(
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeInOut,
             );
           } else {
-            // Se for a primeira página, executa ação personalizada (se existir)
+            // Executa ação customizada ou simplesmente fecha a tela
             if (onFirstPage != null) {
               onFirstPage!();
             } else {
-              // Se nenhuma ação for fornecida, volta para a tela anterior
               Navigator.pop(context);
             }
           }
         },
+
+
+        // Estilo com gradiente circular (se ativado)
+        child: useGradientStyle
+            ? Container(
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [
+                AppColors.blueGradientStart,
+                AppColors.blueGradientEnd,
+              ],
+            ),
+          ),
+          child: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.white,
+            size: 20,
+          ),
+        )
+
+        // Estilo padrão com ícone branco simples
+            : const Icon(
+          Icons.arrow_back_ios_new,
+          color: AppColors.textLight,
+        ),
       ),
     );
   }

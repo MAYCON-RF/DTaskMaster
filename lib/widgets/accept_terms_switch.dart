@@ -1,7 +1,24 @@
+/*
+  Componente: Aceite de Termos com Switch
+
+  Este widget combina um botão de alternância (Switch) com um texto interativo que apresenta os
+  termos e a política de privacidade. Ideal para ser utilizado em telas de cadastro.
+
+  Parâmetros:
+  - value: estado atual do switch (ativado ou não)
+  - onChanged: callback para alteração do switch
+  - onTermsTap: ação ao clicar em "termos e condições"
+  - onPrivacyTap: ação ao clicar em "política de privacidade"
+*/
+
+
+// Importações dos pacotes
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:desafio_task_master/core/app_theme.dart';
 
+
+// Widget sem estado, utilizado para exibir termos com interação e switch
 class AcceptTermsSwitch extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
@@ -21,12 +38,20 @@ class AcceptTermsSwitch extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
+
+        // Botão de alternância para aceite dos termos
         Switch(
           value: value,
           onChanged: onChanged,
-          activeTrackColor: AppColors.primaryLight, // cor gradiente clara
-          activeColor: AppColors.primary,     // cor gradiente escura
+          activeTrackColor: AppColors.blueGradientStart.withAlpha(120), // fundo azul claro translúcido
+          activeColor: AppColors.blueGradientEnd, // botão azul escuro
+          inactiveTrackColor: AppColors.borderLight.withAlpha(100),
+          inactiveThumbColor: AppColors.textDark,
         ),
+
+
+        // Texto explicativo com links interativos para termos e política
         Expanded(
           child: RichText(
             text: TextSpan(
@@ -54,7 +79,6 @@ class AcceptTermsSwitch extends StatelessWidget {
               ],
             ),
           ),
-
         ),
       ],
     );

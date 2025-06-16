@@ -1,5 +1,15 @@
+/*
+  Componente: Main
+
+  Descrição:
+  Este arquivo contém a definição do componente main. Ele segue o padrão de estrutura e estilo do projeto,
+  com comentários explicativos, espaçamento entre blocos de código e responsabilidades bem definidas.
+*/
+
+
 import 'package:flutter/material.dart';
-import 'screens/splash_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:desafio_task_master/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +21,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Desafio Task Master',
       debugShowCheckedModeBanner: false,
-      title: 'DTaskMaster',
+      locale: const Locale('pt', 'BR'),
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        useMaterial3: true,
       ),
-      // home: const LoginScreen(),
-      home: SplashScreen(),
+        home: SplashScreen(),
     );
   }
 }
